@@ -1,0 +1,7 @@
+.collection-item.active {
+	background-color: #546e7a !important;
+}
+
+.collection-item.active i {
+    color: #eafaf9;
+}

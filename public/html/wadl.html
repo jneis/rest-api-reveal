@@ -1,0 +1,89 @@
+<ul class="collection collapsible popout" data-collapsible="accordion">
+  <li class="collection-item"
+      ng-class="{'active': selected(wadl)}"
+      ng-repeat="wadl in wadls | orderBy:'name'"
+      ng-click="toggle(wadl)">
+
+    <div>
+      {{wadl.name}}
+      <a href="#!" class="secondary-content">
+        <i class="mdi-content-send"></i>
+      </a>    
+    </div>
+  </li>           
+</ul>
+
+
+<div class="row">
+  <div class="col m1 offset-m10" ng-show="edition()">
+    <a class="btn-floating btn-large waves-effect waves-light red" ng-click="delete()">
+      <i class="mdi-action-delete"></i>
+    </a>
+  </div>  
+  <div class="col m1" ng-show="edition()">
+    <a class="btn-floating btn-large waves-effect waves-light blue" ng-click="showForm()">
+      <i class="mdi-content-create"></i>
+    </a>
+  </div>
+  <div class="col m1 offset-m11" ng-show="!edition()">
+    <a class="btn-floating btn-large waves-effect waves-light blue" ng-click="showForm()">
+      <i class="mdi-content-add"></i>
+    </a>
+  </div>
+</div>
+
+<div class="row" ng-show="formVisible">
+  <form class="col m6 offset-m3 card blue-grey darken-1" ng-submit="save()">   
+    
+    <div class="card-content white-text">
+      <span class="card-title">Load WSDL</span>
+
+      <div class="row">
+        <div class="input-field col m12">
+       		<input id="name" type="text" ng-model="active.name" ng-disabled="edition()">
+       		<label for="name" ng-class="{'active': filled(active.name)}">API Name</label>
+       	</div>
+      </div>
+
+		  <div class="row">
+      	<div class="input-field col m12">
+       		<input id="url" type="text" ng-model="active.url">
+       		<label for="url" ng-class="{'active': filled(active.url)}">WADL URL</label>
+       	</div>
+      </div>
+
+      <div class="switch">
+  		  <label>
+  		   	<input type="checkbox" ng-model="active.authentication.required">
+  		   	<span class="lever"></span>
+  		      	Authentication required
+  		  </label>
+	  	</div>
+      
+      <div class="row" ng-show="active.authentication.required">
+        <div class="input-field col m6">
+        	<input id="username" type="text" ng-model="active.authentication.username">
+        	<label for="username" ng-class="{'active': filled(active.authentication.username)}">Username</label>
+        </div>
+       	<div class="input-field col m6">
+       		<input id="password" type="password" ng-model="active.authentication.password">
+       		<label for="password" ng-class="{'active': filled(active.authentication.password)}">Password</label>
+       	</div>
+      </div>  
+    </div>
+
+    <div class="card-action">
+		  <div class="row">
+       	<div class="col m2 offset-m8">
+       		<a class="btn-floating btn-large waves-effect waves-light green right" ng-click="save()"><i class="mdi-navigation-check"></i></a>
+       	</div>
+       	<div class="col m2">
+       		<a class="btn-floating btn-large waves-effect waves-light grey right" ng-click="clear()"><i class="mdi-content-clear"></i></a>
+      	</div>
+      </div>
+    </div>
+
+  </form>
+</div>
+
+<br><br>

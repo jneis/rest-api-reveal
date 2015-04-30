@@ -1,0 +1,851 @@
+This XML file does not appear to have any style information associated with it. The document tree is shown below.
+<application xmlns="http://wadl.dev.java.net/2009/02" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<grammars>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://serviceversion" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://serviceversion">
+<xs:import/>
+<xs:element name="serviceVersion" type="serviceVersion"/>
+<xs:element name="serviceVersions">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" ref="serviceVersion"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:schema>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://serviceversion" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://serviceversion">
+<xs:element name="Action" type="ontologyActionSummaryOutput"/>
+<xs:element name="Company" type="ontologyCompanySummaryOutput"/>
+<xs:element name="Deal" type="ontologyDealSummaryOutput"/>
+<xs:element name="DiseaseBriefing" type="ontologyDiseaseBriefingSummaryOutput"/>
+<xs:element name="Drug" type="ontologyDrugSummaryOutput"/>
+<xs:element name="EventTranscript" type="ontologyEventTranscriptSummaryOutput"/>
+<xs:element name="Indication" type="ontologyIndicationSummaryOutput"/>
+<xs:element name="Journal" type="ontologyJournalSummaryOutput"/>
+<xs:element name="Meeting" type="ontologyMeetingSummaryOutput"/>
+<xs:element name="NamedEntityRecognition" type="ontologyNamedEntityRecognitionOutput"/>
+<xs:element name="OntologyIdMappingsOutput" type="ontologyIdMappingsOutput"/>
+<xs:element name="Patent" type="ontologyPatentSummaryOutput"/>
+<xs:element name="PatentFamilySummaryOutputs" type="patentFamilySummaryOutputs"/>
+<xs:element name="Regulatory" type="ontologyRegulatorySummaryOutput"/>
+<xs:element name="Trials" type="ontologyTrialSummaryOutput"/>
+<xs:element name="ontologyDrugIdMapOutput" type="ontologyDrugIdMapOutput"/>
+<xs:element name="ontologySynonymResultOutput" type="ontologySynonymResultOutput"/>
+<xs:element name="ontologyTreeOutput" type="ontologyTreeOutput"/>
+<xs:element name="patentFamilySummaryOutput" type="patentFamilySummaryOutput"/>
+<xs:element name="sourceSummaryOutput" type="sourceSummaryOutput"/>
+<xs:complexType name="ontologyIdMappingsOutput">
+<xs:sequence>
+<xs:element minOccurs="0" name="ActionIdMappings">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="IdMapping" type="ontologyActionIdMapping"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="CompanyIdMappings">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="IdMapping" type="ontologyCompanyIdMapping"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="diseaseIdMappings" type="ontologyDiseaseIdMappings"/>
+<xs:element minOccurs="0" name="drugIdMappings">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="IdMapping" type="ontologyDrugIdMapping"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="targetIdMappings" type="ontologyTargetIdMappings"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="ontologyActionIdMapping">
+<xs:sequence>
+<xs:element minOccurs="0" name="mechanismsCellular">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="mechanism" type="mechanism"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="mechanismsMolecular">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="mechanism" type="mechanism"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="id" type="xs:string"/>
+<xs:attribute name="idType" type="xs:string"/>
+</xs:complexType>
+<xs:complexType name="mechanism">
+<xs:simpleContent>
+<xs:extension base="xs:string">
+<xs:attribute name="id" type="xs:string"/>
+</xs:extension>
+</xs:simpleContent>
+</xs:complexType>
+<xs:complexType name="ontologyCompanyIdMapping">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="idMap" type="ontologyCompanyIdMap"/>
+</xs:sequence>
+<xs:attribute name="id" type="xs:string"/>
+<xs:attribute name="idType" type="xs:string"/>
+</xs:complexType>
+<xs:complexType name="ontologyCompanyIdMap">
+<xs:sequence>
+<xs:element minOccurs="0" name="companyId" type="xs:string"/>
+<xs:element minOccurs="0" name="ISIN" type="xs:string"/>
+<xs:element minOccurs="0" name="message" type="xs:string"/>
+<xs:element minOccurs="0" name="MX" type="xs:string"/>
+<xs:element minOccurs="0" name="organizationId" type="xs:string"/>
+<xs:element minOccurs="0" name="RIC" type="xs:string"/>
+<xs:element minOccurs="0" name="Sedol" type="xs:string"/>
+<xs:element minOccurs="0" name="tickerSymbol" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="ontologyDiseaseIdMappings">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="idMappings" nillable="true" type="diseaseIdMapping"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="diseaseIdMapping">
+<xs:sequence>
+<xs:element minOccurs="0" name="directMapping">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="idMap" type="diseaseIdMap"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="indirectMapping">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="idMap" type="diseaseIdMap"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="id" type="xs:string"/>
+<xs:attribute name="idType" type="xs:string"/>
+</xs:complexType>
+<xs:complexType name="diseaseIdMap">
+<xs:sequence>
+<xs:element minOccurs="0" name="ciIndication" type="xs:string"/>
+<xs:element minOccurs="0" name="ICD10" type="xs:string"/>
+<xs:element minOccurs="0" name="ICD9" type="xs:string"/>
+<xs:element minOccurs="0" name="MEDDRA" type="xs:string"/>
+<xs:element minOccurs="0" name="MeSH" type="xs:string"/>
+<xs:element minOccurs="0" name="ORPHANET" type="xs:string"/>
+<xs:element minOccurs="0" name="omicsDisease" type="xs:string"/>
+<xs:element minOccurs="0" name="siCondition" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="ontologyDrugIdMapping">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="idMap" type="ontologyDrugIdMap"/>
+</xs:sequence>
+<xs:attribute name="id" type="xs:string"/>
+<xs:attribute name="idType" type="xs:string"/>
+</xs:complexType>
+<xs:complexType name="ontologyDrugIdMap">
+<xs:sequence>
+<xs:element minOccurs="0" name="ddapiDrugId" type="xs:string"/>
+<xs:element minOccurs="0" name="idapiDrugId" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="ontologyTargetIdMappings">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="IdMapping" type="targetIdMapping"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="targetIdMapping">
+<xs:sequence>
+<xs:element minOccurs="0" name="idapiTargetIds">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="idapiTargetId" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="swissprotIds">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="swissprotId" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="tapiTargetIds">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="tapiTargetId" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="id" type="xs:string"/>
+<xs:attribute name="idType" type="xs:string"/>
+</xs:complexType>
+<xs:complexType name="ontologyCompanySummaryOutput">
+<xs:sequence>
+<xs:element minOccurs="0" name="Parent" type="xs:string"/>
+<xs:element minOccurs="0" name="CountDrugsInDevelopment" type="xs:string"/>
+<xs:element minOccurs="0" name="ActiveTAs">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="ActiveTA" type="defaultPairOutput"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="Website" type="xs:string"/>
+</xs:sequence>
+<xs:attribute name="id" type="xs:string"/>
+<xs:attribute name="name" type="xs:string"/>
+</xs:complexType>
+<xs:complexType name="defaultPairOutput">
+<xs:simpleContent>
+<xs:extension base="xs:string">
+<xs:attribute name="id" type="xs:string"/>
+<xs:attribute name="type" type="xs:string"/>
+</xs:extension>
+</xs:simpleContent>
+</xs:complexType>
+<xs:complexType name="ontologyDiseaseBriefingSummaryOutput">
+<xs:sequence>
+<xs:element minOccurs="0" name="Title" type="xs:string"/>
+<xs:element minOccurs="0" name="Teaser" type="xs:string"/>
+</xs:sequence>
+<xs:attribute name="id" type="xs:string"/>
+</xs:complexType>
+<xs:complexType name="ontologyDrugIdMapOutput">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="drugIdMap" type="ontologyDrugIdMap"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="ontologyEventTranscriptSummaryOutput">
+<xs:sequence>
+<xs:element minOccurs="0" name="Name" type="xs:string"/>
+<xs:element minOccurs="0" name="Company" type="xs:string"/>
+<xs:element minOccurs="0" name="Drugs">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="Drug" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="id" type="xs:string"/>
+</xs:complexType>
+<xs:complexType name="ontologyDealSummaryOutput">
+<xs:sequence>
+<xs:element minOccurs="0" name="Title" type="xs:string"/>
+<xs:element minOccurs="0" name="Principal" type="xs:string"/>
+<xs:element minOccurs="0" name="Partner" type="xs:string"/>
+<xs:element minOccurs="0" name="Type" type="xs:string"/>
+<xs:element minOccurs="0" name="Status" type="xs:string"/>
+</xs:sequence>
+<xs:attribute name="id" type="xs:string"/>
+</xs:complexType>
+<xs:complexType name="ontologyTrialSummaryOutput">
+<xs:sequence>
+<xs:element minOccurs="0" name="Title" type="xs:string"/>
+<xs:element minOccurs="0" name="Indications">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="Indication" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="Phase" type="xs:string"/>
+<xs:element minOccurs="0" name="Drugs">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="Drug" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="RecruitmentStatus" type="xs:string"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="Sponsor" type="xs:string"/>
+</xs:sequence>
+<xs:attribute name="id" type="xs:string"/>
+</xs:complexType>
+<xs:complexType name="ontologyActionSummaryOutput">
+<xs:sequence>
+<xs:element minOccurs="0" name="Synonyms">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="Synonym" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="id" type="xs:string"/>
+<xs:attribute name="action" type="xs:string"/>
+</xs:complexType>
+<xs:complexType name="ontologyPatentSummaryOutput">
+<xs:sequence>
+<xs:element minOccurs="0" name="OriginalTitle" type="xs:string"/>
+<xs:element minOccurs="0" name="Assignees">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="Assignee" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="EarliestPriority" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="PublicationDate" type="xs:dateTime"/>
+</xs:sequence>
+<xs:attribute name="id" type="xs:string"/>
+<xs:attribute name="number" type="xs:string"/>
+</xs:complexType>
+<xs:complexType name="ontologyTreeOutput">
+<xs:sequence>
+<xs:element minOccurs="0" name="TaxonomyTree">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="Node" type="taxonomyTreeNode"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="taxonomyTreeNode">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="Node" type="taxonomyTreeNode"/>
+</xs:sequence>
+<xs:attribute name="match" type="xs:boolean"/>
+<xs:attribute name="depth" type="xs:int" use="required"/>
+<xs:attribute name="leaf" type="xs:boolean" use="required"/>
+<xs:attribute name="name" type="xs:string"/>
+<xs:attribute name="treeCode" type="xs:string"/>
+<xs:attribute name="id" type="xs:string"/>
+<xs:attribute name="blockSelection" type="xs:boolean"/>
+<xs:attribute name="count" type="xs:int"/>
+<xs:attribute name="changeDateLast" type="xs:string"/>
+</xs:complexType>
+<xs:complexType name="ontologyJournalSummaryOutput">
+<xs:sequence>
+<xs:element minOccurs="0" name="PublicationName" type="xs:string"/>
+<xs:element minOccurs="0" name="PublicationVolume" type="xs:string"/>
+<xs:element minOccurs="0" name="PublicationIssue" type="xs:string"/>
+<xs:element minOccurs="0" name="PublicationPageStart" type="xs:string"/>
+<xs:element minOccurs="0" name="PublicationPageEnd" type="xs:string"/>
+</xs:sequence>
+<xs:attribute name="id" type="xs:string"/>
+<xs:attribute name="title" type="xs:string"/>
+</xs:complexType>
+<xs:complexType name="ontologyNamedEntityRecognitionOutput">
+<xs:sequence>
+<xs:element minOccurs="0" name="Entities">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="Entity" type="ontologyLocatedEntityOutput"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="Sentences">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="sentence" type="ontologySentence"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="ontologyLocatedEntityOutput">
+<xs:sequence/>
+<xs:attribute name="start" type="xs:int" use="required"/>
+<xs:attribute name="end" type="xs:int" use="required"/>
+<xs:attribute name="originalForm" type="xs:string"/>
+<xs:attribute name="id" type="xs:string"/>
+<xs:attribute name="type" type="xs:string"/>
+<xs:attribute name="name" type="xs:string"/>
+<xs:attribute name="synonym" type="xs:string"/>
+<xs:attribute name="normalizedSynonym" type="xs:string"/>
+<xs:attribute name="multiUseSynonym" type="xs:boolean"/>
+<xs:attribute name="jaroWinklerDistance" type="xs:int"/>
+<xs:attribute name="sentence" type="xs:int"/>
+<xs:attribute name="token" type="xs:int"/>
+<xs:attribute name="warning" type="xs:string"/>
+</xs:complexType>
+<xs:complexType name="ontologySentence">
+<xs:sequence/>
+<xs:attribute name="end" type="xs:int"/>
+<xs:attribute name="number" type="xs:int"/>
+<xs:attribute name="start" type="xs:int"/>
+</xs:complexType>
+<xs:complexType name="ontologyIndicationSummaryOutput">
+<xs:sequence>
+<xs:element minOccurs="0" name="Synonyms">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="Synonym" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="TherapyArea" type="xs:string"/>
+</xs:sequence>
+<xs:attribute name="id" type="xs:string"/>
+<xs:attribute name="name" type="xs:string"/>
+</xs:complexType>
+<xs:complexType name="ontologyRegulatorySummaryOutput">
+<xs:sequence>
+<xs:element minOccurs="0" name="Title" type="xs:string"/>
+<xs:element minOccurs="0" name="Region" type="xs:string"/>
+<xs:element minOccurs="0" name="DocCategory" type="xs:string"/>
+<xs:element minOccurs="0" name="DocType" type="xs:string"/>
+<xs:element minOccurs="0" name="Status" type="xs:string"/>
+</xs:sequence>
+<xs:attribute name="id" type="xs:string"/>
+</xs:complexType>
+<xs:complexType name="sourceSummaryOutput">
+<xs:sequence>
+<xs:element minOccurs="0" name="SourceId" type="xs:string"/>
+<xs:element minOccurs="0" name="Description" type="xs:string"/>
+<xs:element minOccurs="0" name="Title" type="xs:string"/>
+<xs:element minOccurs="0" name="Authors">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="Author" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="Origin" type="xs:string"/>
+<xs:element minOccurs="0" name="PublicationDetails" type="publicationDetails"/>
+<xs:element minOccurs="0" name="isConferencePresentation" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="publicationDetails">
+<xs:sequence>
+<xs:element minOccurs="0" name="Date" type="xs:string"/>
+<xs:element minOccurs="0" name="Issue" type="xs:string"/>
+<xs:element minOccurs="0" name="Volume" type="xs:string"/>
+<xs:element minOccurs="0" name="Year" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="patentFamilySummaryOutputs">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="PatentFamilySummaryOutput" type="patentFamilySummaryOutput"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="patentFamilySummaryOutput">
+<xs:sequence>
+<xs:element minOccurs="0" name="Title" type="xs:string"/>
+<xs:element minOccurs="0" name="Assignee" type="xs:string"/>
+<xs:element minOccurs="0" name="Familymembers" type="xs:string"/>
+<xs:element minOccurs="0" name="PatentNumber" type="xs:string"/>
+<xs:element minOccurs="0" name="Indication" type="xs:string"/>
+<xs:element minOccurs="0" name="Action" type="xs:string"/>
+</xs:sequence>
+<xs:attribute name="id" type="xs:string"/>
+</xs:complexType>
+<xs:complexType name="ontologyMeetingSummaryOutput">
+<xs:sequence>
+<xs:element minOccurs="0" name="ConferenceName" type="xs:string"/>
+<xs:element minOccurs="0" name="StartDate" type="xs:string"/>
+<xs:element minOccurs="0" name="EndDate" type="xs:string"/>
+<xs:element minOccurs="0" name="City" type="xs:string"/>
+<xs:element minOccurs="0" name="Country" type="xs:string"/>
+</xs:sequence>
+<xs:attribute name="id" type="xs:string"/>
+<xs:attribute name="title" type="xs:string"/>
+</xs:complexType>
+<xs:complexType name="ontologyDrugSummaryOutput">
+<xs:sequence>
+<xs:element minOccurs="0" name="HDS" type="xs:string"/>
+<xs:element minOccurs="0" name="Actions">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="Action" type="defaultPairOutput"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="Indications">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="Indication" type="defaultPairOutput"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="Entities">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="Entity" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element minOccurs="0" name="OriginatorCompany" type="ontologyDrugCompany"/>
+</xs:sequence>
+<xs:attribute name="id" type="xs:string"/>
+<xs:attribute name="name" type="xs:string"/>
+</xs:complexType>
+<xs:complexType name="ontologyDrugCompany">
+<xs:simpleContent>
+<xs:extension base="xs:string">
+<xs:attribute name="id" type="xs:string"/>
+</xs:extension>
+</xs:simpleContent>
+</xs:complexType>
+<xs:complexType name="serviceVersion">
+<xs:sequence>
+<xs:element minOccurs="0" name="major" type="xs:string"/>
+<xs:element minOccurs="0" name="minor" type="xs:string"/>
+<xs:element minOccurs="0" name="patch" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="ontologySynonymResultOutput">
+<xs:sequence>
+<xs:element minOccurs="0" name="Entities">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="Entity" type="synonymResult"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="synonymResult">
+<xs:sequence>
+<xs:element minOccurs="0" name="Synonyms">
+<xs:complexType>
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="Synonym" type="synonymDetail"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+<xs:attribute name="type" type="xs:string"/>
+<xs:attribute name="id" type="xs:string"/>
+<xs:attribute name="ddapi_id" type="xs:string"/>
+<xs:attribute name="name" type="xs:string"/>
+</xs:complexType>
+<xs:complexType name="synonymDetail">
+<xs:simpleContent>
+<xs:extension base="xs:string">
+<xs:attribute name="ddapi" type="xs:string"/>
+<xs:attribute name="idapi" type="xs:string"/>
+<xs:attribute name="omics" type="xs:string"/>
+</xs:extension>
+</xs:simpleContent>
+</xs:complexType>
+</xs:schema>
+</grammars>
+<resources base="http://ng-api-dev-dtc.thomson-pharma.com/ls-api-ws/ws/rs/ontologies-v1">
+<resource path="/">
+<resource path="idMappings/{taxonomyType}/{idType}">
+<param name="taxonomyType" style="template" type="xs:string"/>
+<param name="idType" style="template" type="xs:string"/>
+<method name="GET">
+<request>
+<param name="ids" style="query" type="xs:string"/>
+</request>
+<response>
+<representation mediaType="application/xml"/>
+<representation mediaType="application/json"/>
+</response>
+</method>
+</resource>
+<resource path="idmap/{taxonomyType}/{idtype}/{id}">
+<param name="taxonomyType" style="template" type="xs:string"/>
+<param name="idtype" style="template" type="xs:string"/>
+<param name="id" style="template" type="xs:string"/>
+<method name="GET">
+<request/>
+<response>
+<representation mediaType="application/xml"/>
+<representation mediaType="application/json"/>
+</response>
+</method>
+</resource>
+<resource path="metadata/suported/{version}">
+<param name="version" style="template" type="xs:string"/>
+<method name="GET">
+<request/>
+<response>
+<representation mediaType="application/json">
+<param name="result" style="plain" type="xs:boolean"/>
+</representation>
+</response>
+</method>
+</resource>
+<resource path="metadata/version">
+<method name="GET">
+<response>
+<representation mediaType="application/json"/>
+</response>
+</method>
+</resource>
+<resource path="metadata/versions">
+<method name="GET">
+<response>
+<representation mediaType="application/json"/>
+</response>
+</method>
+</resource>
+<resource path="ner">
+<method name="GET">
+<request>
+<param name="text" style="query" type="xs:string"/>
+</request>
+<response>
+<representation mediaType="application/xml"/>
+<representation mediaType="application/json"/>
+</response>
+</method>
+<method name="GET">
+<request>
+<param name="text" style="query" type="xs:string"/>
+</request>
+<response>
+<representation mediaType="application/csv"/>
+</response>
+</method>
+<method name="POST">
+<request>
+<representation mediaType="application/x-www-form-urlencoded">
+<param name="text" style="query" type="xs:string"/>
+</representation>
+</request>
+<response>
+<representation mediaType="application/xml"/>
+<representation mediaType="application/json"/>
+</response>
+</method>
+<method name="POST">
+<request>
+<representation mediaType="application/x-www-form-urlencoded">
+<param name="text" style="query" type="xs:string"/>
+</representation>
+</request>
+<response>
+<representation mediaType="application/csv"/>
+</response>
+</method>
+</resource>
+<resource path="sourceSummary">
+<method name="GET">
+<request>
+<param name="id" style="query" type="xs:string"/>
+<param name="type" style="query" type="xs:string"/>
+</request>
+<response>
+<representation mediaType="application/xml"/>
+<representation mediaType="application/json"/>
+</response>
+</method>
+</resource>
+<resource path="summary/action/{id}">
+<param name="id" style="template" type="xs:string"/>
+<method name="GET">
+<request/>
+<response>
+<representation mediaType="application/xml"/>
+<representation mediaType="application/json"/>
+</response>
+</method>
+</resource>
+<resource path="summary/company/{id}">
+<param name="id" style="template" type="xs:string"/>
+<method name="GET">
+<request/>
+<response>
+<representation mediaType="application/xml"/>
+<representation mediaType="application/json"/>
+</response>
+</method>
+</resource>
+<resource path="summary/deal/{id}">
+<param name="id" style="template" type="xs:string"/>
+<method name="GET">
+<request/>
+<response>
+<representation mediaType="application/xml"/>
+<representation mediaType="application/json"/>
+</response>
+</method>
+</resource>
+<resource path="summary/diseaseBriefing/{id}">
+<param name="id" style="template" type="xs:string"/>
+<method name="GET">
+<request/>
+<response>
+<representation mediaType="application/xml"/>
+<representation mediaType="application/json"/>
+</response>
+</method>
+</resource>
+<resource path="summary/drug/{id}">
+<param name="id" style="template" type="xs:string"/>
+<method name="GET">
+<request/>
+<response>
+<representation mediaType="application/xml"/>
+<representation mediaType="application/json"/>
+</response>
+</method>
+</resource>
+<resource path="summary/eventTranscript/{id}">
+<param name="id" style="template" type="xs:string"/>
+<method name="GET">
+<request/>
+<response>
+<representation mediaType="application/xml"/>
+<representation mediaType="application/json"/>
+</response>
+</method>
+</resource>
+<resource path="summary/indication/{id}">
+<param name="id" style="template" type="xs:string"/>
+<method name="GET">
+<request/>
+<response>
+<representation mediaType="application/xml"/>
+<representation mediaType="application/json"/>
+</response>
+</method>
+</resource>
+<resource path="summary/journal/{id}">
+<param name="id" style="template" type="xs:string"/>
+<method name="GET">
+<request/>
+<response>
+<representation mediaType="application/xml"/>
+<representation mediaType="application/json"/>
+</response>
+</method>
+</resource>
+<resource path="summary/meeting/{id}">
+<param name="id" style="template" type="xs:string"/>
+<method name="GET">
+<request/>
+<response>
+<representation mediaType="application/xml"/>
+<representation mediaType="application/json"/>
+</response>
+</method>
+</resource>
+<resource path="summary/patent/{id}">
+<param name="id" style="template" type="xs:string"/>
+<method name="GET">
+<request/>
+<response>
+<representation mediaType="application/xml"/>
+<representation mediaType="application/json"/>
+</response>
+</method>
+</resource>
+<resource path="summary/patentFamily/{id}">
+<param name="id" style="template" type="xs:string"/>
+<method name="GET">
+<request/>
+<response>
+<representation mediaType="application/xml"/>
+<representation mediaType="application/json"/>
+</response>
+</method>
+</resource>
+<resource path="summary/regulatory/{id}">
+<param name="id" style="template" type="xs:string"/>
+<method name="GET">
+<request/>
+<response>
+<representation mediaType="application/xml"/>
+<representation mediaType="application/json"/>
+</response>
+</method>
+</resource>
+<resource path="summary/trial/{id}">
+<param name="id" style="template" type="xs:string"/>
+<method name="GET">
+<request/>
+<response>
+<representation mediaType="application/xml"/>
+<representation mediaType="application/json"/>
+</response>
+</method>
+</resource>
+<resource path="synonyms/{taxonomyType}/{searchQuery}">
+<param name="taxonomyType" style="template" type="xs:string"/>
+<param name="searchQuery" style="template" type="xs:string"/>
+<method name="GET">
+<request/>
+<response>
+<representation mediaType="application/xml"/>
+<representation mediaType="application/json"/>
+</response>
+</method>
+</resource>
+<resource path="synonymsID/{taxonomyType}">
+<param name="taxonomyType" style="template" type="xs:string"/>
+<method name="GET">
+<request>
+<param name="idType" style="query" type="xs:string"/>
+<param name="ids" style="query" type="xs:string"/>
+</request>
+<response>
+<representation mediaType="application/xml"/>
+<representation mediaType="application/json"/>
+</response>
+</method>
+</resource>
+<resource path="taxonomy/{treetype}/children/{treecode}">
+<param name="treetype" style="template" type="xs:string"/>
+<param name="treecode" style="template" type="xs:string"/>
+<method name="GET">
+<request>
+<param name="includedescendants" style="query" type="xs:string"/>
+<param name="enableCounts" style="query" type="xs:string"/>
+<param name="countDataSet" style="query" type="xs:string"/>
+</request>
+<response>
+<representation mediaType="application/xml"/>
+<representation mediaType="application/json"/>
+</response>
+</method>
+</resource>
+<resource path="taxonomy/{treetype}/parent/{treecode}">
+<param name="treetype" style="template" type="xs:string"/>
+<param name="treecode" style="template" type="xs:string"/>
+<method name="GET">
+<request>
+<param name="enableCounts" style="query" type="xs:string"/>
+<param name="countDataSet" style="query" type="xs:string"/>
+</request>
+<response>
+<representation mediaType="application/xml"/>
+<representation mediaType="application/json"/>
+</response>
+</method>
+</resource>
+<resource path="taxonomy/{treetype}/root/">
+<param name="treetype" style="template" type="xs:string"/>
+<method name="GET">
+<request>
+<param name="enableCounts" style="query" type="xs:string"/>
+<param name="countDataSet" style="query" type="xs:string"/>
+</request>
+<response>
+<representation mediaType="application/xml"/>
+<representation mediaType="application/json"/>
+</response>
+</method>
+</resource>
+<resource path="taxonomy/{treetype}/search/{searchstring}">
+<param name="treetype" style="template" type="xs:string"/>
+<param name="searchstring" style="template" type="xs:string"/>
+<method name="GET">
+<request>
+<param name="operationType" style="query" type="xs:string"/>
+<param name="treeTypeFilter" style="query" type="xs:string"/>
+</request>
+<response>
+<representation mediaType="application/xml"/>
+<representation mediaType="application/json"/>
+</response>
+</method>
+</resource>
+</resource>
+</resources>
+</application>
