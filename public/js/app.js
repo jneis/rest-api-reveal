@@ -4,8 +4,8 @@
 
 		.module("restApiReveal", [
 			"ngRoute",
-			"services",
-			"controllers"
+			"wadlSrv",
+			"wadlCtrl"
 		])
 
 		.config(function($routeProvider) {
