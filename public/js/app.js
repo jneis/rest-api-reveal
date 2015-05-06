@@ -23,6 +23,11 @@
 					controller: 'wadlCtrl'
 				})
 
+				.when('/wadl/:name', {
+					templateUrl: 'html/resource.html',
+					controller: 'resourceCtrl'
+				})
+
 				.otherwise({
 					redirectTo: '/'
 				});

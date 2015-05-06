@@ -2,7 +2,7 @@
 
 	angular
 
-		.module('wadlCtrl', [])
+		.module('wadlCtrl', ['wadlSrv'])
 
 		.controller('wadlCtrl', ['$scope', 'wadlSrv', function($scope, wadlSrv) {
 
