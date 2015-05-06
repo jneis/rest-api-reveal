@@ -2,9 +2,9 @@
 
 	angular
 
-		.module("wadlCtrl", [])
+		.module('wadlCtrl', [])
 
-		.controller("wadlCtrl", ["$scope", "wadlSrv", function($scope, wadlSrv) {
+		.controller('wadlCtrl', ['$scope', 'wadlSrv', function($scope, wadlSrv) {
 
 			$scope.active = undefined;
 			$scope.formVisible = false;
@@ -15,7 +15,7 @@
 
 			var select = function(wadl) {
 				if ($scope.formVisible) {
-					if (confirm("Discard?")) {
+					if (confirm('Discard?')) {
 						$scope.active = wadl;
 						$scope.clear();
 					}					
@@ -68,7 +68,7 @@
 			};
 
 			$scope.filled = function(value) {
-				return value !== undefined && value !== "";
+				return value !== undefined && value !== '';
 			};
 
 			$scope.edition = function() {

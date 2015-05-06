@@ -2,11 +2,11 @@
 
 	angular
 
-		.module("wadlSrv", [])
+		.module('wadlSrv', [])
 
-		.factory("wadlSrv", ["$http", function($http) {
+		.factory('wadlSrv', ['$http', function($http) {
 
-			var hostname = "http://localhost:3000/rest-api-reveal/";
+			var hostname = 'http://localhost:3000/rest-api-reveal/';
 
 			var post = function(path, data, callback) {
 				var url = hostname + path;
@@ -60,19 +60,19 @@
 			return {
 				saveWadl: function(wadl, callback) {
 					if (wadl._id !== undefined) {
-						put("wadl/" + wadl.name, wadl, callback);
+						put('wadl/' + wadl.name, wadl, callback);
 					} else {
-						post("wadl", wadl, callback);
+						post('wadl', wadl, callback);
 					};					
 				},
 				deleteWadl: function(name, callback) {
-					del("wadl/" + name, callback);
+					del('wadl/' + name, callback);
 				},
 				listWadls: function(callback) {
-					get("wadl", {}, callback);
+					get('wadl', {}, callback);
 				},
 				getWadl: function(name, callback) {
-					get("wadl/" + name, {}, callback)
+					get('wadl/' + name, {}, callback)
 				}
 			};
 

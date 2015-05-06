@@ -2,27 +2,29 @@
 
 	angular
 
-		.module("restApiReveal", [
-			"ngRoute",
-			"wadlSrv",
-			"wadlCtrl"
+		.module('restApiReveal', [
+			'ngRoute',
+			'wadlSrv',
+			'resourceSrv',
+			'wadlCtrl',
+			'resourceCtrl'
 		])
 
 		.config(function($routeProvider) {
 			
 			$routeProvider
 
-				.when("/", {
-					templateUrl: "html/start.html"
+				.when('/', {
+					templateUrl: 'html/start.html'
 				})
 
-				.when("/wadl", {
-					templateUrl: "html/wadl.html",
-					controller: "wadlCtrl"
+				.when('/wadl', {
+					templateUrl: 'html/wadl.html',
+					controller: 'wadlCtrl'
 				})
 
 				.otherwise({
-					redirectTo: "/"
+					redirectTo: '/'
 				});
 		});
 
