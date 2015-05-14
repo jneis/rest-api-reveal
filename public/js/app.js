@@ -23,7 +23,7 @@
 					controller: 'wadlCtrl'
 				})
 
-				.when('/wadl/:name', {
+				.when('/wadl/:wadl', {
 					templateUrl: 'html/resource.html',
 					controller: 'resourceCtrl'
 				})

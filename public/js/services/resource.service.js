@@ -28,6 +28,7 @@
 					get('wadl/' + wadl + '/resource', {}, callback);
 				},
 				getWadl: function(wadl, name, callback) {
+					console.log("wadl: " + wadl + " resource: " + name);
 					get('wadl/' + wadl + '/resource/' + name, {}, callback)
 				}
 			};

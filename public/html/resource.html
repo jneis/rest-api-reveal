@@ -1,12 +1,12 @@
 <ul class="collection collapsible popout" data-collapsible="accordion">
   <li class="collection-item"
       ng-class="{'active': selected(resource)}"
-      ng-repeat="resource in resources | orderBy:'name'"
+      ng-repeat="resource in resources"
       ng-click="toggle(resource)">
 
     <div>
-      {{resource.name}}
-      <a href="#/wadl/{{wadl}}/resource/{{resource.name | lowercase}}" class="secondary-content">
+      {{resource}}
+      <a href="#/wadl/{{wadl}}/resource/{{resource}}" class="secondary-content">
         <i class="mdi-content-send"></i>
       </a>    
     </div>

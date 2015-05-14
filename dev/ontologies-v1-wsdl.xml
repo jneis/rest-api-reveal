@@ -532,6 +532,7 @@ This XML file does not appear to have any style information associated with it. 
 </xs:complexType>
 </xs:schema>
 </grammars>
+
 <resources base="http://ng-api-dev-dtc.thomson-pharma.com/ls-api-ws/ws/rs/ontologies-v1">
 <resource path="/">
 <resource path="idMappings/{taxonomyType}/{idType}">

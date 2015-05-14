@@ -2,7 +2,7 @@
 
 	angular
 
-		.module('resourceCtrl', ['resourceSrv'])
+		.module('resourceCtrl', ['resourceSrv', 'ngRoute'])
 
 		.controller('resourceCtrl', ['$routeParams', '$scope', 'resourceSrv',
 
@@ -10,11 +10,26 @@
 
 				$scope.wadl = $routeParams.wadl;
 				$scope.active = undefined;
+				$scope.resources = [];
 				
-				$scope.resources = [{name: 'idMapping'}, {name: 'synonyms'}, {name: 'search'}];
-				//resourceSrv.listResources(function(resources) {
-				//	$scope.resources = resources;
-				//});
+				var dropParams = function(path) {
+					var temp = path;			
+					while (temp.includes('{')) {
+						var start = temp.indexOf('/{');
+						var end = temp.indexOf('}');		
+						temp = temp.slice(0, start) + temp.slice(end + 1);
+					};
+					return temp;
+				};
+
+				resourceSrv.listResources($scope.wadl, function(resources) {
+					resources.forEach(function(resource) {
+						var path = dropParams(resource.path);
+						var name = path.replace(/\//g, '-');
+						$scope.resources.push(name);
+					});
+					//console.log($scope.resources);
+				});
 
 				var select = function(resource) {
 					$scope.active = resource;
